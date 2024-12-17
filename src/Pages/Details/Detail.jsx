@@ -1,12 +1,19 @@
-import image from "../../assets/purple.png";
+import purple from "../../assets/purple.png";
+import black from "../../assets/black.png";
+import blue from "../../assets/blue.png";
+import cyan from "../../assets/cyan.png";
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import Type_Model from "../../Components/Type_Model/Type_Model";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import { useState } from "react";
 
 const Detail = () => {
+  const [image, setImage] = useState(purple);
+  const [size, setSize] = useState("S");
+  const [unitPrice, setUnitPrice] = useState(69);
   return (
     <div className="max-w-7xl mx-auto font-roboto pt-2">
       {/* content part */}
@@ -55,27 +62,100 @@ const Detail = () => {
           {/* color */}
           <div className="pt-5 flex flex-col gap-2.5">
             <p className="text-[#364A63] font-bold text-xl">Band Color</p>
-            <div className="flex gap-5">
-              <div className="w-4 h-4 bg-[#816BFF] rounded-full"></div>
-              <div className="w-4 h-4 bg-[#1FCEC9] rounded-full"></div>
-              <div className="w-4 h-4 bg-[#4B97D3] rounded-full"></div>
-              <div className="w-4 h-4 bg-[#3B4747] rounded-full"></div>
+            <div className="flex gap-5 items-center">
+              <div
+                className={`rounded-full p-1 ${
+                  image !== purple ? "" : "border-2 border-[#816BFF]"
+                }`}
+              >
+                <div
+                  className="w-4 h-4 bg-[#816BFF] rounded-full cursor-pointer"
+                  onClick={() => setImage(purple)}
+                ></div>
+              </div>
+
+              <div
+                className={` rounded-full p-1 ${
+                  image !== cyan ? "" : "border-2 border-[#1FCEC9]"
+                }`}
+              >
+                <div
+                  className="w-4 h-4 bg-[#1FCEC9] rounded-full cursor-pointer"
+                  onClick={() => setImage(cyan)}
+                ></div>
+              </div>
+              <div
+                className={` rounded-full p-1 ${
+                  image !== blue ? "" : "border-2 border-[#4B97D3]"
+                }`}
+              >
+                <div
+                  className="w-4 h-4 bg-[#4B97D3] rounded-full cursor-pointer"
+                  onClick={() => setImage(blue)}
+                ></div>
+              </div>
+              <div
+                className={` rounded-full p-1 ${
+                  image !== black ? "" : "border-2 border-[#3B4747]"
+                }`}
+              >
+                <div
+                  className="w-4 h-4 bg-[#3B4747] rounded-full cursor-pointer"
+                  onClick={() => setImage(black)}
+                ></div>
+              </div>
             </div>
           </div>
           {/* size */}
           <div className="pt-5 flex flex-col gap-2.5">
             <p className="text-[#364A63] font-bold text-xl">Wrist Size</p>
             <div className="flex gap-5">
-              <button className=" border border-[#6576FF] pt-2 pb-2 pl-[18px] pr-[18px] font-bold rounded text-[#6576FF] size">
+              <button
+                onClick={() => {
+                  setSize("S"), setUnitPrice(69);
+                }}
+                className={` border pt-2 pb-2 pl-[18px] pr-[18px] font-bold rounded  size ${
+                  size === "S" && unitPrice === 69
+                    ? "border-[#6576FF] text-[#6576FF]"
+                    : " border-[#DBDFEA] text-[#364A63]"
+                }`}
+              >
                 S <span className="font-normal text-[#8091A7] price">$69</span>
               </button>
-              <button className="border border-[#DBDFEA] pt-2 pb-2 pl-[18px] pr-[18px] font-bold rounded text-[#364A63] size">
+              <button
+                onClick={() => {
+                  setSize("M"), setUnitPrice(79);
+                }}
+                className={`border pt-2 pb-2 pl-[18px] pr-[18px] font-bold rounded text-[#364A63] size ${
+                  size === "M" && unitPrice === 79
+                    ? "border-[#6576FF] text-[#6576FF]"
+                    : " border-[#DBDFEA] text-[#364A63]"
+                }`}
+              >
                 M <span className="font-normal text-[#8091A7] price">$79</span>
               </button>
-              <button className="border border-[#DBDFEA] pt-2 pb-2 pl-[18px] pr-[18px] font-bold rounded text-[#364A63] size">
+              <button
+                onClick={() => {
+                  setSize("L"), setUnitPrice(89);
+                }}
+                className={`border pt-2 pb-2 pl-[18px] pr-[18px] font-bold rounded size ${
+                  size === "L" && unitPrice === 89
+                    ? "border-[#6576FF] text-[#6576FF]"
+                    : " border-[#DBDFEA] text-[#364A63]"
+                }`}
+              >
                 L <span className="font-normal text-[#8091A7] price">$89</span>
               </button>
-              <button className="border border-[#DBDFEA] pt-2 pb-2 pl-[18px] pr-[18px] font-bold rounded text-[#364A63] size">
+              <button
+                onClick={() => {
+                  setSize("XL"), setUnitPrice(99);
+                }}
+                className={`border pt-2 pb-2 pl-[18px] pr-[18px] font-bold rounded size ${
+                  size === "XL" && unitPrice === 99
+                    ? "border-[#6576FF] text-[#6576FF]"
+                    : " border-[#DBDFEA] text-[#364A63]"
+                }`}
+              >
                 XL <span className="font-normal text-[#8091A7] price">$99</span>
               </button>
             </div>
