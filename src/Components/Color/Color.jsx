@@ -4,7 +4,7 @@ import blue from "../../assets/blue.png";
 import cyan from "../../assets/cyan.png";
 const Color = ({image, setImage, setColor}) => {
   return (
-    <div className="pt-5 flex flex-col gap-2.5">
+    <div className="pt-5 flex flex-col gap-2.5 items-center md:items-start">
       <p className="text-[#364A63] font-bold text-xl">Band Color</p>
       <div className="flex gap-5 items-center">
         <div

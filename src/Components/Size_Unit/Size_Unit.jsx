@@ -1,6 +1,6 @@
 const Size_Unit = ({ size, setSize, unitPrice, setUnitPrice }) => {
   return (
-    <div className="pt-5 flex flex-col gap-2.5">
+    <div className="pt-5 flex flex-col gap-2.5 items-center md:items-start">
       <p className="text-[#364A63] font-bold text-xl">Wrist Size</p>
       <div className="flex gap-5">
         <button

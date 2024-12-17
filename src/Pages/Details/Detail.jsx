@@ -1,13 +1,14 @@
 import purple from "../../assets/purple.png";
-import { FaStar } from "react-icons/fa";
-import { FaStarHalfAlt } from "react-icons/fa";
-import { FaRegStar } from "react-icons/fa";
 import Type_Model from "../../Components/Type_Model/Type_Model";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { useState } from "react";
 import Color from "../../Components/Color/Color";
 import Size_Unit from "../../Components/Size_Unit/Size_Unit";
+import Rating from "../../Components/Rating/Rating";
+import Description from "../../Components/Description/Description";
+import Checkout_Section from "../../Components/Checkout_Section/Checkout_Section";
+import Modal from "../../Components/Modal/Modal";
 
 const Detail = () => {
   const [image, setImage] = useState(purple);
@@ -17,6 +18,7 @@ const Detail = () => {
   const [cart, setCart] = useState([]);
   const [color, setColor] = useState("Purple");
   const title = "Classy Modern Smart watch";
+  const [modelView, setModalView] = useState(false);
 
   const handleDecrement = () => {
     if (quantity > 0) {
@@ -36,42 +38,35 @@ const Detail = () => {
     return item;
   };
 
-  const totalQuantity = cart.reduce((total, item) => total+item.quantity, 0)  
-  
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+
   return (
     <div className="max-w-7xl mx-auto font-roboto pt-2">
       {/* content part */}
-      <div className="flex gap-[60px] items-center">
+      <div className="flex gap-[60px] items-center flex-col md:flex-row">
         {/* image part  */}
         <div className="flex-1">
           <img src={image} className="rounded" alt="" />
         </div>
+
         {/* product details part  */}
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col items-center md:items-start">
           {/* title */}
-          <h2 className="py-3 text-[#364A63] font-bold text-[40px]">{title}</h2>
+          <h2 className="py-3 text-[#364A63] font-bold text-[40px] text-center md:text-left">{title}</h2>
+
           {/* rating  */}
-          <div className="flex py-1 gap-2 items-center">
-            <FaStar className="text-[#FFD200]" />
-            <FaStar className="text-[#FFD200]" />
-            <FaStar className="text-[#FFD200]" />
-            <FaStarHalfAlt className="text-[#FFD200]" />
-            <FaRegStar className="text-[#FFD200]" />
-            <p className="text-sm">(2 Reviews)</p>
-          </div>
+          <Rating />
+
           {/* price tag */}
           <div className="flex gap-1 pt-5 items-end">
             <p className="text-[#8091A7] text-xl line-through">$99.00</p>
             <p className="text-[#6576FF] text-2xl font-bold">$79.00</p>
           </div>
+
           {/* description */}
-          <div className="pt-4 pr-1">
-            <p className="text-[#8091A7] text-lg">
-              I must explain to you how all this mistaken idea of denoun cing
-              ple praising pain was born and I will give you a complete account
-              of the system, and expound the actual teaching.
-            </p>
-          </div>
+          <Description />
+
           {/* type and model */}
           <div className="pt-5 pb-1 flex gap-11">
             <div>
@@ -81,6 +76,7 @@ const Detail = () => {
               <Type_Model title="Model Number" description="Forerunner 290XT" />
             </div>
           </div>
+
           {/* color */}
           <Color image={image} setImage={setImage} setColor={setColor} />
 
@@ -144,23 +140,20 @@ const Detail = () => {
       </div>
 
       {/* checkout btn section */}
-      <section
-        className={`items-center justify-center pt-5 pb-5 my-10 ${cart.length>0? "flex":"hidden"}`}
-        id="checkout"
-      >
-        <button
-          id="checkoutBtn"
-          className="rounded-[20px] flex bg-[#FFBB5A] text-[#364A63] pt-2 pb-2 pr-6 pl-6 gap-[10px] items-center justify-center text-sm font-bold"
-        >
-          Checkout
-          <span
-            id="totalQuantity"
-            className="bg-white pt-[2px] pb-[2px] pl-[6px] pr-[6px] text-[12px] rounded"
-          >
-            {totalQuantity}
-          </span>
-        </button>
-      </section>
+      <Checkout_Section
+        cart={cart}
+        totalQuantity={totalQuantity}
+        setModalView={setModalView}
+        modelView={modelView}
+      />
+      {/* modal */}
+      <Modal
+        modelView={modelView}
+        setModalView={setModalView}
+        cart={cart}
+        totalQuantity={totalQuantity}
+        totalPrice={totalPrice}
+      />
     </div>
   );
 };
