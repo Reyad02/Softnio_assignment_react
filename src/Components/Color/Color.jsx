@@ -2,6 +2,8 @@ import purple from "../../assets/purple.png";
 import black from "../../assets/black.png";
 import blue from "../../assets/blue.png";
 import cyan from "../../assets/cyan.png";
+import PropTypes from 'prop-types'; 
+
 const Color = ({image, setImage, setColor}) => {
   return (
     <div className="pt-5 flex flex-col gap-2.5 items-center md:items-start">
@@ -51,6 +53,12 @@ const Color = ({image, setImage, setColor}) => {
       </div>
     </div>
   );
+};
+
+Color.propTypes = {
+  image: PropTypes.string,
+  setColor: PropTypes.func,
+  setImage: PropTypes.func,
 };
 
 export default Color;

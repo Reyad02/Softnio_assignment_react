@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Checkout_Section = ({ cart, totalQuantity, setModalView, modelView }) => {
   return (
     <section
@@ -23,6 +25,13 @@ const Checkout_Section = ({ cart, totalQuantity, setModalView, modelView }) => {
       </button>
     </section>
   );
+};
+
+Checkout_Section.propTypes = {
+  cart: PropTypes.array,
+  totalQuantity: PropTypes.number,
+  modelView: PropTypes.bool,
+  setModalView: PropTypes.func,
 };
 
 export default Checkout_Section;

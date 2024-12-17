@@ -2,6 +2,7 @@ import purple from "../../assets/purple.png";
 import Type_Model from "../../Components/Type_Model/Type_Model";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import Color from "../../Components/Color/Color";
 import Size_Unit from "../../Components/Size_Unit/Size_Unit";
@@ -130,10 +131,7 @@ const Detail = () => {
               Add to Cart
             </button>
             <button>
-              <i
-                className="fa-regular fa-heart text-[#6576FF]"
-                id="favorite"
-              ></i>
+              <FaRegHeart className="text-[#6576FF]"/>
             </button>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Size_Unit = ({ size, setSize, unitPrice, setUnitPrice }) => {
   return (
     <div className="pt-5 flex flex-col gap-2.5 items-center md:items-start">
@@ -54,6 +56,13 @@ const Size_Unit = ({ size, setSize, unitPrice, setUnitPrice }) => {
       </div>
     </div>
   );
+};
+
+Size_Unit.propTypes = {
+  size: PropTypes.string,
+  setSize: PropTypes.func,
+  unitPrice: PropTypes.number,
+  setUnitPrice: PropTypes.func,
 };
 
 export default Size_Unit;
