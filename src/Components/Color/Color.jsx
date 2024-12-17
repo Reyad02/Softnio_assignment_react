@@ -2,7 +2,7 @@ import purple from "../../assets/purple.png";
 import black from "../../assets/black.png";
 import blue from "../../assets/blue.png";
 import cyan from "../../assets/cyan.png";
-const Color = ({image, setImage}) => {
+const Color = ({image, setImage, setColor}) => {
   return (
     <div className="pt-5 flex flex-col gap-2.5">
       <p className="text-[#364A63] font-bold text-xl">Band Color</p>
@@ -14,7 +14,7 @@ const Color = ({image, setImage}) => {
         >
           <div
             className="w-4 h-4 bg-[#816BFF] rounded-full cursor-pointer"
-            onClick={() => setImage(purple)}
+            onClick={() => {setImage(purple), setColor("Purple")}}
           ></div>
         </div>
 
@@ -25,7 +25,7 @@ const Color = ({image, setImage}) => {
         >
           <div
             className="w-4 h-4 bg-[#1FCEC9] rounded-full cursor-pointer"
-            onClick={() => setImage(cyan)}
+            onClick={() => {setImage(cyan), setColor("Cyan")}}
           ></div>
         </div>
         <div
@@ -35,7 +35,7 @@ const Color = ({image, setImage}) => {
         >
           <div
             className="w-4 h-4 bg-[#4B97D3] rounded-full cursor-pointer"
-            onClick={() => setImage(blue)}
+            onClick={() => {setImage(blue), setColor("Blue")}}
           ></div>
         </div>
         <div
@@ -45,7 +45,7 @@ const Color = ({image, setImage}) => {
         >
           <div
             className="w-4 h-4 bg-[#3B4747] rounded-full cursor-pointer"
-            onClick={() => setImage(black)}
+            onClick={() => {setImage(black), setColor("Black")}}
           ></div>
         </div>
       </div>

@@ -14,12 +14,30 @@ const Detail = () => {
   const [size, setSize] = useState("S");
   const [unitPrice, setUnitPrice] = useState(69);
   const [quantity, setQuantity] = useState(0);
+  const [cart, setCart] = useState([]);
+  const [color, setColor] = useState("Purple");
+  const title = "Classy Modern Smart watch";
 
   const handleDecrement = () => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
     }
   };
+
+  const createData = (title, image, color, size, quantity, unitPrice) => {
+    const item = {
+      name: title,
+      image: image,
+      color: color,
+      size: size,
+      quantity: quantity,
+      price: quantity * unitPrice,
+    };
+    return item;
+  };
+
+  const totalQuantity = cart.reduce((total, item) => total+item.quantity, 0)  
+  
   return (
     <div className="max-w-7xl mx-auto font-roboto pt-2">
       {/* content part */}
@@ -31,9 +49,7 @@ const Detail = () => {
         {/* product details part  */}
         <div className="flex-1">
           {/* title */}
-          <h2 className="py-3 text-[#364A63] font-bold text-[40px]">
-            Classy Modern Smart watch
-          </h2>
+          <h2 className="py-3 text-[#364A63] font-bold text-[40px]">{title}</h2>
           {/* rating  */}
           <div className="flex py-1 gap-2 items-center">
             <FaStar className="text-[#FFD200]" />
@@ -66,10 +82,15 @@ const Detail = () => {
             </div>
           </div>
           {/* color */}
-          <Color image={image} setImage={setImage} />
+          <Color image={image} setImage={setImage} setColor={setColor} />
 
           {/* size */}
-          <Size_Unit size={size} setSize={setSize} unitPrice={unitPrice} setUnitPrice={setUnitPrice}/>
+          <Size_Unit
+            size={size}
+            setSize={setSize}
+            unitPrice={unitPrice}
+            setUnitPrice={setUnitPrice}
+          />
 
           {/* quantity and cart */}
           <div className="pt-5 flex gap-[10px] items-center">
@@ -94,6 +115,19 @@ const Detail = () => {
               </button>
             </div>
             <button
+              onClick={() => {
+                if (quantity > 0) {
+                  const newItem = createData(
+                    title,
+                    image,
+                    color,
+                    size,
+                    quantity,
+                    unitPrice
+                  );
+                  setCart([...cart, newItem]);
+                }
+              }}
               id="cart"
               className="bg-[#6576FF] text-white font-bold pt-2 pb-2 pl-[18px] pr-[18px] rounded text-sm"
             >
@@ -111,7 +145,7 @@ const Detail = () => {
 
       {/* checkout btn section */}
       <section
-        className="items-center justify-center pt-5 pb-5 flex my-10"
+        className={`items-center justify-center pt-5 pb-5 my-10 ${cart.length>0? "flex":"hidden"}`}
         id="checkout"
       >
         <button
@@ -123,7 +157,7 @@ const Detail = () => {
             id="totalQuantity"
             className="bg-white pt-[2px] pb-[2px] pl-[6px] pr-[6px] text-[12px] rounded"
           >
-            0
+            {totalQuantity}
           </span>
         </button>
       </section>
