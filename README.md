@@ -24,21 +24,22 @@ A responsive **Product Detail Page** converted from a Figma design into function
 
 3. **Responsive Design**
    - Fully optimized for desktop, tablet and mobile views.
-  
-## Figma Design
-
-### Product Detail View
-![Product Detail](assets/Product%20-%20detail.png)
-
-### Cart Modal
-![Cart Modal](assets/Cart%20-%20modal.png)
 
 ## How to Run Locally
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Reyad02/Softnio_assignment.git
-   cd Softnio_assignment
+   git clone https://github.com/Reyad02/Softnio_assignment_react.git
+   cd Softnio_assignment_react
    ```
-2. Open `index.html`  in any browser.
+2. Install Dependencies
+   ```bash
+   npm install
+   ```
+3. Run the Development Server
+    ```bash
+   npm run dev
+   ```
+
+
 
